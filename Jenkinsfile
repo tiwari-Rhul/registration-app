@@ -23,6 +23,13 @@ pipeline {
                 }
       }
 
+     
+
+      stage("Test Application"){
+                 steps {
+                       sh "mvn test"
+                 }
+      }
       stage("SonarQube Analysis"){
                steps{
                   script{ 
@@ -31,12 +38,6 @@ pipeline {
                      }
                   }
                }
-      }
-
-      stage("Test Application"){
-                 steps {
-                       sh "mvn test"
-                 }
       }
   }
 }
