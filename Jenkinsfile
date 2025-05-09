@@ -59,6 +59,9 @@ pipeline {
      stage("Prepare WAR for Docker"){
         steps{
            sh '''
+           ls 
+           pwd
+           whoami
            mkdir -p docker-build
            cp target/*.war docker-build/webapp.war
            cp Dockerfile docker-build/ '''
