@@ -18,6 +18,7 @@ pipeline {
                  cleanWs()
                }
       }
+     
     
       stage("Checkout from SCM"){
                 steps {
@@ -54,6 +55,15 @@ pipeline {
             }
          }
       }
+
+     stage("Prepare WAR for Docker"){
+        steps{
+           sh '''
+           mkdir -p docker-build
+           cp target/*.war docker-build/webapp.war
+           cp Dockerfile docker-build/ '''
+           }
+         }
   
      stage("Build & Push Docker Image"){
         steps{
