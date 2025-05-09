@@ -54,12 +54,7 @@ pipeline {
             }
          }
       }
-   stage("Prepare WAR for Docker")
-     {
-        steps{
-           sh 'cp target/*.war .'
-        }
-     }
+  
      stage("Build & Push Docker Image"){
         steps{
            script {
