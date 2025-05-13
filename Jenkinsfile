@@ -56,10 +56,10 @@ pipeline {
      stage("Build & Push Docker Image"){
         steps{
            script{
-              docker.withRegister('',DOCKER_PASS){
+              docker.withRegistry('',DOCKER_PASS){
                  docker_image = docker.build "${IMAGE_NAME}"
               }
-              docker.withRegister('',DOCKER_PASS){
+              docker.withRegistry('',DOCKER_PASS){
                  docker_image.push("${IMAGE_TAG}")
                  docker_image.push('latest')
               }
